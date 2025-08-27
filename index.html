@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modxgo - Turning Bold Ideas into Scalable Products</title>
+    <meta name="description" content="We design. We build. You transform. Professional software development agency specializing in MVPs, full-stack development, and AI integration.">
+    
+    <!-- Material-UI CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/material-ui/4.12.4/styles.min.css" rel="stylesheet">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --background: #ffffff;
+            --foreground: #1f2937;
+            --card: #f1f5f9;
+            --card-foreground: #1f2937;
+            --primary: #1f2937;
+            --primary-foreground: #ffffff;
+            --secondary: #8b5cf6;
+            --secondary-foreground: #ffffff;
+            --muted: #6b7280;
+            --muted-foreground: #4b5563;
+            --accent: #8b5cf6;
+            --accent-foreground: #ffffff;
+            --border: #e5e7eb;
+            --radius: 0.5rem;
+        }
+
+        .dark {
+            --background: #0f172a;
+            --foreground: #f8fafc;
+            --card: #1e293b;
+            --card-foreground: #f8fafc;
+            --primary: #f8fafc;
+            --primary-foreground: #1f2937;
+            --secondary: #8b5cf6;
+            --muted: #475569;
+            --muted-foreground: #94a3b8;
+            --accent: #8b5cf6;
+            --border: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Navigation */
+        .nav {
+            background: var(--background);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--foreground);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+        }
+
+        .nav-link {
+            color: var(--muted-foreground);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--foreground);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: var(--primary-foreground);
+            border: none;
+            border-radius: var(--radius);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--secondary-foreground);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--border);
+            color: var(--foreground);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--accent-foreground);
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-alt {
+            background: var(--card);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--muted-foreground);
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 5rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero .accent {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--muted-foreground);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        /* Services */
+        .service-card {
+            text-align: center;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 24px;
+        }
+
+        /* Testimonials */
+        .testimonial {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .testimonial-content {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--muted-foreground);
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--foreground);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: var(--primary-foreground);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--background);
+                flex-direction: column;
+                padding: 1rem;
+                border-top: 1px solid var(--border);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Page specific styles */
+        .page-content {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        /* Form styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--foreground);
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--background);
+            color: var(--foreground);
+            font-size: 1rem;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--secondary);
+            color: var(--secondary-foreground);
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .badge-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--foreground);
+        }
+
+        /* Tabs */
+        .tabs {
+            margin-bottom: 2rem;
+        }
+
+        .tabs-list {
+            display: flex;
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 0.25rem;
+            overflow-x: auto;
+        }
+
+        .tabs-trigger {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            color: var(--muted-foreground);
+            border-radius: calc(var(--radius) - 0.25rem);
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .tabs-trigger.active {
+            background: var(--accent);
+            color: var(--accent-foreground);
+        }
+
+        /* Contact info cards */
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--muted-foreground);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo font-serif">modxgo</a>
+            <button class="nav-toggle" id="navToggle">
+                <span class="material-icons">menu</span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-page="work">Work</a></li>
+                <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                <li><a href="#" class="nav-link" data-page="insights">Insights</a></li>
+                <li><a href="#" class="nav-link" data-page="pricing">Pricing</a></li>
+                <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="page-content">
+        <!-- Home Page -->
+        <div id="home-page" class="page">
+            <!-- Hero Section -->
+            <section class="hero section">
+                <div class="container">
+                    <h1 class="font-serif">
+                        Turning Bold Ideas into <span class="accent">Scalable Products</span>
+                    </h1>
+                    <p>
+                        We design. We build. You transform. Professional software development agency specializing in MVPs, full-stack development, and AI integration.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#" class="btn" data-page="contact">Start Your Project</a>
+                        <a href="#" class="btn btn-outline" data-page="work">View Our Work</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Overview -->
+            <section class="section section-alt">
+                <div class="container">
+                    <h2 class="section-title font-serif">Our Services</h2>
+                    <p class="section-subtitle">
+                        End-to-end product development services designed to transform your ideas into successful, scalable solutions.
+                    </p>
+                    <div class="grid grid-3">
+                        <div class="card service-card">
+                            <div class="service-icon">
+                                <span class="material-icons">rocket_launch</span>
+                            </div>
+                            <h3>MVP Development</h3>
+                            <p>Launch your product quickly with a feature-complete MVP that validates your core assumptions and attracts early users.</p>
+                        </div>
+                        <div class="card service-card">
+                            <div class="service-icon">
+                                <span class="material-icons">code</span>
+                            </div>
+                            <h3>Full-Stack Development</h3>
+                            <p>Scalable web and mobile applications built with modern technologies and best practices for long-term success.</p>
+                        </div>
+                        <div class="card service-card">
+                            <div class="service-icon">
+                                <span class="material-icons">smart_toy</span>
+                            </div>
+                            <h3>AI Integration</h3>
+                            <p>Enhance your product with intelligent features using machine learning and AI technologies.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why Work With Us -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="section-title font-serif">Why Choose modxgo?</h2>
+                    <div class="grid grid-2">
+                        <div class="card">
+                            <h3>Proven Track Record</h3>
+                            <p>200+ successful products launched with a 95% client satisfaction rate. Our portfolio spans startups to Fortune 500 companies.</p>
+                        </div>
+                        <div class="card">
+                            <h3>Technical Excellence</h3>
+                            <p>Senior-level developers with expertise in modern frameworks, cloud architecture, and emerging technologies.</p>
+                        </div>
+                        <div class="card">
+                            <h3>Agile Approach</h3>
+                            <p>Fast iterations, continuous feedback, and transparent communication throughout the development process.</p>
+                        </div>
+                        <div class="card">
+                            <h3>Long-term Partnership</h3>
+                            <p>We're invested in your success with ongoing support, maintenance, and strategic guidance as you scale.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="section section-alt">
+                <div class="container">
+                    <h2 class="section-title font-serif">What Our Clients Say</h2>
+                    <div class="grid grid-3">
+                        <div class="testimonial">
+                            <div class="testimonial-content">
+                                "modxgo transformed our idea into a successful product that now serves over 50,000 users. Their expertise in both technology and business strategy was invaluable."
+                            </div>
+                            <div class="testimonial-author">Sarah Johnson, CEO of TechStart</div>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial-content">
+                                "The team delivered our MVP 2 weeks ahead of schedule and under budget. The quality of code and attention to detail exceeded our expectations."
+                            </div>
+                            <div class="testimonial-author">Michael Chen, Founder of DataFlow</div>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial-content">
+                                "Working with modxgo was like having a world-class CTO on our team. They guided us through every technical decision with wisdom and foresight."
+                            </div>
+                            <div class="testimonial-author">Emily Rodriguez, Co-founder of HealthTech Pro</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="section" style="background: var(--accent); color: var(--accent-foreground);">
+                <div class="container" style="text-align: center;">
+                    <h2 class="font-serif" style="color: inherit; margin-bottom: 1rem;">Ready to Build Something Amazing?</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
+                        Let's discuss your project and explore how we can help you achieve your goals.
+                    </p>
+                    <a href="#" class="btn" data-page="contact" style="background: white; color: var(--accent);">
+                        Get Started Today
+                        <span class="material-icons">arrow_forward</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <!-- Work Page -->
+        <div id="work-page" class="page hidden">
+            <section class="hero section">
+                <div class="container">
+                    <h1 class="font-serif">
+                        Our <span class="accent">Work</span>
+                    </h1>
+                    <p>
+                        Real projects, real results. See how we've helped businesses across industries transform their ideas into successful, scalable products.
+                    </p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="tabs">
+                        <div class="tabs-list">
+                            <button class="tabs-trigger active" data-filter="all">All</button>
+                            <button class="tabs-trigger" data-filter="fintech">FinTech</button>
+                            <button class="tabs-trigger" data-filter="saas">SaaS</button>
+                            <button class="tabs-trigger" data-filter="healthtech">HealthTech</button>
+                            <button class="tabs-trigger" data-filter="ecommerce">E-commerce</button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-2" id="workGrid">
+                        <div class="card work-item" data-category="fintech">
+                            <div style="height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: var(--radius); margin-bottom: 1rem;"></div>
+                            <div class="badge badge-outline">FinTech</div>
+                            <h3>FinanceFlow: FinTech MVP Launch</h3>
+                            <p>Built and launched a complete fintech MVP in 12 weeks, enabling secure payments and user onboarding for 10K+ users.</p>
+                            <div class="stats" style="margin-top: 1rem; margin-bottom: 0;">
+                                <div>
+                                    <div class="stat-value" style="font-size: 1.2rem;">10K+</div>
+                                    <div class="stat-label">Users</div>
+                                </div>
+                                <div>
+                                    <div class="stat-value" style="font-size: 1.2rem;">$2.5M</div>
+                                    <div class="stat-label">Transaction Volume</div>
+                                </div>
+                                <div>
+                                    <div class="stat-value" style="font-size: 1.2rem;">85%</div>
+                                    <div class="stat-label">Retention</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card work-item" data-category="saas">
+                            <div style="height: 200px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: var(--radius); margin-bottom: 1rem;"></div>
+                            <div class="badge badge-outline">SaaS</div>
+                            <h3>DataVision: Enterprise SaaS Platform</h3>
+                            <p>Scaled a B2B SaaS platform to handle 1M+ transactions daily with microservices architecture and AI-powered analytics.</p>
+                            <div class="stats" style="margin-top: 1rem; margin-bottom: 0;">
+                                <div>
+                                    <div class="stat-value" style="font-size: 1.2rem;">1M+</div>
+                                    <div class="stat-label">Daily Transactions</div>
+                                </div>
+                                <div>
+                                    <div class="stat-value" style="font-size: 1.2rem;">300%</div>
+                                    <div class="stat-label">Performance Boost</div>
+                                </div>
+                                <div>
+                                    <div class="stat-value" style="font-size: 1.2rem;">40%</div>
+                                    <div class="stat-label">Cost Reduction</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card work-item" data-category="healthtech">
+                            <div style="height: 200px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: var(--radius); margin-bottom: 1rem;"></div>
+                            <div class="badge badge-outline">HealthTech</div>
+                            <h3>HealthConnect: Mobile Health Platform</h3>
+                            <p>Developed a HIPAA-compliant mobile health application with real-time monitoring and telemedicine capabilities.</p>
+                            <div class="stats" style="margin-top: 1rem; margin-bottom: 0;">
+                                <div>
+                                    <div class="stat-value" style="font-size: 1.2rem;">50K+</div>
+                                    <div class="stat-label">Active Patients</div>
+                                </div>
+                                <div>
+                                    <div class="stat-value" style="font-size: 1.2rem;">95%</div>
+                                    <div class="stat-label">Success Rate</div>
+                                </div>
+                                <div>
+                                    <div class="stat-value" style="font-size: 1.2rem;">4.8/5</div>
+                                    <div class="stat-label">App Rating</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card work-item" data-category="ecommerce">
+                            <div style="height: 200px; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); border-radius: var(--radius); margin-bottom: 1rem;"></div>
+                            <div class="badge badge-outline">E-commerce</div>
+                            <h3>ShopSmart: E-commerce Platform</h3>
+                            <p>Built a scalable e-commerce platform with AI-powered recommendations and multi-vendor marketplace capabilities.</p>
+                            <div class="stats" style="margin-top: 1rem; margin-bottom: 0;">
+                                <div>
+                                    <div class="stat-value" style="font-size: 1.2rem;">$5M+</div>
+                                    <div class="stat-label">GMV Year 1</div>
+                                </div>
+                                <div>
+                                    <div class="stat-value" style="font-size: 1.2rem;">500+</div>
+                                    <div class="stat-label">Active Vendors</div>
+                                </div>
+                                <div>
+                                    <div class="stat-value" style="font-size: 1.2rem;">3.2%</div>
+                                    <div class="stat-label">Conversion Rate</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="section" style="background: var(--accent); color: var(--accent-foreground);">
+                <div class="container" style="text-align: center;">
+                    <h2 class="font-serif" style="color: inherit; margin-bottom: 1rem;">Ready to Join Our Success Stories?</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
+                        Let's discuss your project and explore how we can help you achieve similar results.
+                    </p>
+                    <a href="#" class="btn" data-page="contact" style="background: white; color: var(--accent);">
+                        Start Your Project
+                        <span class="material-icons">arrow_forward</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Page -->
+        <div id="about-page" class="page hidden">
+            <section class="hero section">
+                <div class="container">
+                    <h1 class="font-serif">
+                        About <span class="accent">modxgo</span>
+                    </h1>
+                    <p>
+                        Founded by entrepreneurs, for entrepreneurs. We understand the challenges of building products that scale and deliver real business value.
+                    </p>
+                    <div class="stats">
+                        <div>
+                            <div class="stat-value">8+</div>
+                            <div class="stat-label">Years in Business</div>
+                        </div>
+                        <div>
+                            <div class="stat-value">200+</div>
+                            <div class="stat-label">Products Launched</div>
+                        </div>
+                        <div>
+                            <div class="stat-value">45+</div>
+                            <div class="stat-label">Team Members</div>
+                        </div>
+                        <div>
+                            <div class="stat-value">25+</div>
+                            <div class="stat-label">Countries Served</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Our Story -->
+            <section class="section section-alt">
+                <div class="container">
+                    <h2 class="section-title font-serif">Our Story</h2>
+                    <div style="max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8;">
+                        <p style="margin-bottom: 2rem;">
+                            modxgo was born from a simple frustration: too many great ideas never make it to market because of poor execution, bloated processes, and misaligned priorities.
+                        </p>
+                        <p style="margin-bottom: 2rem;">
+                            As serial entrepreneurs who've built, scaled, and exited multiple companies, we've experienced firsthand the challenges of turning vision into reality. We've seen brilliant concepts fail due to technical debt, and we've watched mediocre ideas succeed because of exceptional execution.
+                        </p>
+                        <p>
+                            That's why we founded modxgo in 2016 - to bridge the gap between ambitious vision and flawless execution. We combine the strategic thinking of seasoned entrepreneurs with the technical excellence of world-class engineers and designers.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Values -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="section-title font-serif">Our Values</h2>
+                    <div class="grid grid-2">
+                        <div class="card">
+                            <div class="service-icon" style="background: rgba(139, 92, 246, 0.1); color: var(--accent);">
+                                <span class="material-icons">favorite</span>
+                            </div>
+                            <h3>Client-First Mindset</h3>
+                            <p>Every decision we make is guided by what's best for our clients' success. Your wins are our wins, and we're invested in your long-term growth.</p>
+                        </div>
+                        <div class="card">
+                            <div class="service-icon" style="background: rgba(139, 92, 246, 0.1); color: var(--accent);">
+                                <span class="material-icons">target</span>
+                            </div>
+                            <h3>Product Excellence</h3>
+                            <p>We don't just build software; we craft products that users love and businesses profit from. Quality is never negotiable.</p>
+                        </div>
+                        <div class="card">
+                            <div class="service-icon" style="background: rgba(139, 92, 246, 0.1); color: var(--accent);">
+                                <span class="material-icons">group</span>
+                            </div>
+                            <h3>Collaborative Partnership</h3>
+                            <p>We work as an extension of your team, not as an external vendor. Transparency, communication, and shared ownership drive everything we do.</p>
+                        </div>
+                        <div class="card">
+                            <div class="service-icon" style="background: rgba(139, 92, 246, 0.1); color: var(--accent);">
+                                <span class="material-icons">bolt</span>
+                            </div>
+                            <h3>Lean & Agile</h3>
+                            <p>Fast iterations, continuous feedback, and data-driven decisions. We eliminate waste and focus on what truly moves the needle.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Insights Page -->
+        <div id="insights-page" class="page hidden">
+            <section class="hero section">
+                <div class="container">
+                    <h1 class="font-serif">
+                        Insights & <span class="accent">Resources</span>
+                    </h1>
+                    <p>
+                        Expert insights on product development, technology trends, and building successful software companies.
+                    </p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="tabs">
+                        <div class="tabs-list">
+                            <button class="tabs-trigger active" data-category="all">All</button>
+                            <button class="tabs-trigger" data-category="strategy">Strategy</button>
+                            <button class="tabs-trigger" data-category="technology">Technology</button>
+                            <button class="tabs-trigger" data-category="design">Design</button>
+                            <button class="tabs-trigger" data-category="management">Management</button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-3" id="articlesGrid">
+                        <div class="card article-item" data-category="strategy">
+                            <div style="height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: var(--radius); margin-bottom: 1rem;"></div>
+                            <div class="badge badge-outline">Strategy</div>
+                            <h3>The Complete Guide to MVP Development in 2024</h3>
+                            <p>Learn how to build a successful MVP that validates your idea without breaking the bank. Our proven framework has helped 200+ startups launch successfully.</p>
+                            <div style="margin-top: 1rem; display: flex; justify-content: between; align-items: center;">
+                                <small style="color: var(--muted-foreground);">8 min read • Dec 15, 2024</small>
+                            </div>
+                        </div>
+
+                        <div class="card article-item" data-category="technology">
+                            <div style="height: 200px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: var(--radius); margin-bottom: 1rem;"></div>
+                            <div class="badge badge-outline">Technology</div>
+                            <h3>AI Integration Trends: What Every Business Should Know</h3>
+                            <p>Discover the latest AI trends and how to integrate machine learning features into your product without the complexity.</p>
+                            <div style="margin-top: 1rem;">
+                                <small style="color: var(--muted-foreground);">6 min read • Dec 10, 2024</small>
+                            </div>
+                        </div>
+
+                        <div class="card article-item" data-category="management">
+                            <div style="height: 200px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: var(--radius); margin-bottom: 1rem;"></div>
+                            <div class="badge badge-outline">Management</div>
+                            <h3>Scaling Development Teams: When and How to Grow</h3>
+                            <p>A practical guide to scaling your development team, from hiring your first engineer to building a world-class engineering organization.</p>
+                            <div style="margin-top: 1rem;">
+                                <small style="color: var(--muted-foreground);">10 min read • Dec 5, 2024</small>
+                            </div>
+                        </div>
+
+                        <div class="card article-item" data-category="design">
+                            <div style="height: 200px; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); border-radius: var(--radius); margin-bottom: 1rem;"></div>
+                            <div class="badge badge-outline">Design</div>
+                            <h3>10 UX Design Principles That Drive Conversions</h3>
+                            <p>Evidence-based design principles that can increase your conversion rates by up to 200%. Real examples from our client projects.</p>
+                            <div style="margin-top: 1rem;">
+                                <small style="color: var(--muted-foreground);">7 min read • Nov 28, 2024</small>
+                            </div>
+                        </div>
+
+                        <div class="card article-item" data-category="technology">
+                            <div style="height: 200px; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); border-radius: var(--radius); margin-bottom: 1rem;"></div>
+                            <div class="badge badge-outline">Technology</div>
+                            <h3>Choosing the Right Tech Stack for Your Startup</h3>
+                            <p>A comprehensive guide to selecting technologies that will scale with your business, from MVP to enterprise.</p>
+                            <div style="margin-top: 1rem;">
+                                <small style="color: var(--muted-foreground);">12 min read • Nov 20, 2024</small>
+                            </div>
+                        </div>
+
+                        <div class="card article-item" data-category="strategy">
+                            <div style="height: 200px; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); border-radius: var(--radius); margin-bottom: 1rem;"></div>
+                            <div class="badge badge-outline">Strategy</div>
+                            <h3>Finding Product-Market Fit: A Data-Driven Approach</h3>
+                            <p>Learn how to measure and achieve product-market fit using metrics that matter. Includes templates and frameworks.</p>
+                            <div style="margin-top: 1rem;">
+                                <small style="color: var(--muted-foreground);">9 min read • Nov 15, 2024</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- White Papers -->
+            <section class="section section-alt">
+                <div class="container">
+                    <h2 class="section-title font-serif">White Papers & Guides</h2>
+                    <p class="section-subtitle">In-depth resources to help you make better product decisions.</p>
+                    <div class="grid grid-3">
+                        <div class="card">
+                            <h3>Product Scope: A Lean Guide to Feature Planning</h3>
+                            <p>Our proven framework for defining product scope and prioritizing features that matter.</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+                                <span class="badge">24 pages</span>
+                                <a href="#" class="btn">Download</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3>The ROI of Good UX Design</h3>
+                            <p>Data-driven insights on how design investment impacts business metrics.</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+                                <span class="badge">18 pages</span>
+                                <a href="#" class="btn">Download</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3>Scaling Engineering Teams: A Playbook</h3>
+                            <p>Best practices for growing engineering teams from 5 to 50+ developers.</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+                                <span class="badge">32 pages</span>
+                                <a href="#" class="btn">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Newsletter CTA -->
+            <section class="section" style="background: var(--accent); color: var(--accent-foreground);">
+                <div class="container" style="text-align: center;">
+                    <h2 class="font-serif" style="color: inherit; margin-bottom: 1rem;">Stay Updated</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
+                        Get the latest insights on product development, technology trends, and startup growth delivered to your inbox.
+                    </p>
+                    <a href="#" class="btn" data-page="contact" style="background: white; color: var(--accent);">
+                        Subscribe to Newsletter
+                        <span class="material-icons">arrow_forward</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <!-- Pricing Page -->
+        <div id="pricing-page" class="page hidden">
+            <section class="hero section">
+                <div class="container">
+                    <h1 class="font-serif">
+                        Transparent <span class="accent">Pricing</span>
+                    </h1>
+                    <p>
+                        Choose the engagement model that fits your needs and budget. No hidden fees, no surprises.
+                    </p>
+                </div>
+            </section>
+
+            <section class="section section-alt">
+                <div class="container">
+                    <h2 class="section-title font-serif">Engagement Models</h2>
+                    <p class="section-subtitle">Flexible options designed to match your project needs and business stage.</p>
+                    
+                    <div class="grid grid-2">
+                        <div class="card" style="position: relative;">
+                            <div class="service-icon" style="background: var(--accent);">
+                                <span class="material-icons">bolt</span>
+                            </div>
+                            <h3>MVP Sprint</h3>
+                            <p style="color: var(--accent); font-weight: 600; margin-bottom: 1rem;">Perfect for validating ideas quickly</p>
+                            <p>Get your product to market fast with our proven MVP development process.</p>
+                            <div style="margin: 1.5rem 0;">
+                                <div style="font-size: 2rem; font-weight: bold; color: var(--foreground);">$30k - $70k</div>
+                                <div style="color: var(--muted-foreground);">8-12 weeks</div>
+                            </div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <strong>Ideal for:</strong> Startups, new product ideas, market validation
+                            </div>
+                            <ul style="margin-bottom: 2rem; padding-left: 1.2rem;">
+                                <li>Product strategy & scope definition</li>
+                                <li>UX/UI design and prototyping</li>
+                                <li>Core feature development</li>
+                                <li>Basic testing and deployment</li>
+                                <li>2 weeks post-launch support</li>
+                            </ul>
+                            <a href="#" class="btn" data-page="contact">Get Started</a>
+                        </div>
+
+                        <div class="card" style="position: relative; border: 2px solid var(--accent);">
+                            <div class="badge" style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent);">Most Popular</div>
+                            <div class="service-icon" style="background: var(--accent);">
+                                <span class="material-icons">group</span>
+                            </div>
+                            <h3>Dedicated Team</h3>
+                            <p style="color: var(--accent); font-weight: 600; margin-bottom: 1rem;">Your extended development team</p>
+                            <p>Scale your development capacity with a dedicated team of experts.</p>
+                            <div style="margin: 1.5rem 0;">
+                                <div style="font-size: 2rem; font-weight: bold; color: var(--foreground);">$12k - $25k/month</div>
+                                <div style="color: var(--muted-foreground);">3+ months</div>
+                            </div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <strong>Ideal for:</strong> Growing companies, ongoing development, scaling teams
+                            </div>
+                            <ul style="margin-bottom: 2rem; padding-left: 1.2rem;">
+                                <li>Full-stack developers (2-6 people)</li>
+                                <li>UI/UX designer</li>
+                                <li>QA engineer</li>
+                                <li>Technical project manager</li>
+                                <li>Weekly progress reports</li>
+                            </ul>
+                            <a href="#" class="btn" data-page="contact">Get Started</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="service-icon" style="background: var(--accent);">
+                                <span class="material-icons">schedule</span>
+                            </div>
+                            <h3>Hourly Consulting</h3>
+                            <p style="color: var(--accent); font-weight: 600; margin-bottom: 1rem;">Flexible support when you need it</p>
+                            <p>Get expert advice and development support on an as-needed basis.</p>
+                            <div style="margin: 1.5rem 0;">
+                                <div style="font-size: 2rem; font-weight: bold; color: var(--foreground);">$150 - $250/hour</div>
+                                <div style="color: var(--muted-foreground);">Flexible</div>
+                            </div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <strong>Ideal for:</strong> Technical audits, code reviews, strategic consulting
+                            </div>
+                            <ul style="margin-bottom: 2rem; padding-left: 1.2rem;">
+                                <li>Senior-level expertise</li>
+                                <li>Flexible scheduling</li>
+                                <li>No long-term commitment</li>
+                                <li>Technical documentation</li>
+                                <li>Strategic recommendations</li>
+                            </ul>
+                            <a href="#" class="btn" data-page="contact">Get Started</a>
+                        </div>
+
+                        <div class="card">
+                            <div class="service-icon" style="background: var(--accent);">
+                                <span class="material-icons">all_inclusive</span>
+                            </div>
+                            <h3>Unlimited Design</h3>
+                            <p style="color: var(--accent); font-weight: 600; margin-bottom: 1rem;">All the design work you need</p>
+                            <p>Unlimited design requests with fast turnaround times.</p>
+                            <div style="margin: 1.5rem 0;">
+                                <div style="font-size: 2rem; font-weight: bold; color: var(--foreground);">$4,995/month</div>
+                                <div style="color: var(--muted-foreground);">Monthly subscription</div>
+                            </div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <strong>Ideal for:</strong> Marketing teams, ongoing design needs, multiple projects
+                            </div>
+                            <ul style="margin-bottom: 2rem; padding-left: 1.2rem;">
+                                <li>Unlimited design requests</li>
+                                <li>2-3 day average turnaround</li>
+                                <li>Web & mobile design</li>
+                                <li>Brand & marketing materials</li>
+                                <li>Pause or cancel anytime</li>
+                            </ul>
+                            <a href="#" class="btn" data-page="contact">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="section" style="background: var(--accent); color: var(--accent-foreground);">
+                <div class="container" style="text-align: center;">
+                    <h2 class="font-serif" style="color: inherit; margin-bottom: 1rem;">Ready to Get Started?</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
+                        Book a free discovery call to discuss your project and get a custom proposal.
+                    </p>
+                    <a href="#" class="btn" data-page="contact" style="background: white; color: var(--accent);">
+                        Book Discovery Call
+                        <span class="material-icons">arrow_forward</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact-page" class="page hidden">
+            <section class="hero section">
+                <div class="container">
+                    <h1 class="font-serif">
+                        Let's Build Something <span class="accent">Amazing</span>
+                    </h1>
+                    <p>
+                        Ready to transform your idea into reality? Tell us about your project and we'll show you how we can help.
+                    </p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="grid" style="grid-template-columns: 2fr 1fr; gap: 3rem;">
+                        <!-- Contact Form -->
+                        <div class="card">
+                            <h2 class="font-serif" style="margin-bottom: 0.5rem;">Tell Us About Your Project</h2>
+                            <p style="color: var(--muted-foreground); margin-bottom: 2rem;">
+                                Fill out the form below and we'll get back to you within 24 hours with next steps.
+                            </p>
+                            
+                            <form id="contactForm">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Full Name *</label>
+                                        <input type="text" class="form-input" placeholder="John Smith" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Email Address *</label>
+                                        <input type="email" class="form-input" placeholder="john@company.com" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Company Name</label>
+                                    <input type="text" class="form-input" placeholder="Your Company">
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Project Type *</label>
+                                        <select class="form-select" required>
+                                            <option value="">Select project type</option>
+                                            <option value="mvp">MVP Development</option>
+                                            <option value="full-product">Full Product Development</option>
+                                            <option value="design">UX/UI Design</option>
+                                            <option value="ai-ml">AI/ML Integration</option>
+                                            <option value="dedicated-team">Dedicated Team</option>
+                                            <option value="maintenance">Maintenance & Support</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Budget Range</label>
+                                        <select class="form-select">
+                                            <option value="">Select budget range</option>
+                                            <option value="under-25k">Under $25k</option>
+                                            <option value="25k-50k">$25k - $50k</option>
+                                            <option value="50k-100k">$50k - $100k</option>
+                                            <option value="100k-250k">$100k - $250k</option>
+                                            <option value="250k-plus">$250k+</option>
+                                            <option value="not-sure">Not sure yet</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Desired Timeframe</label>
+                                    <select class="form-select">
+                                        <option value="">When do you want to start?</option>
+                                        <option value="asap">ASAP</option>
+                                        <option value="1-month">Within 1 month</option>
+                                        <option value="1-3-months">1-3 months</option>
+                                        <option value="3-6-months">3-6 months</option>
+                                        <option value="6-plus-months">6+ months</option>
+                                        <option value="exploring">Just exploring</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Project Description *</label>
+                                    <textarea class="form-textarea" rows="5" placeholder="Tell us about your project, goals, and any specific requirements..." required></textarea>
+                                </div>
+                                
+                                <button type="submit" class="btn" style="width: 100%;">
+                                    Send Message
+                                    <span class="material-icons">send</span>
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Contact Information -->
+                        <div style="display: flex; flex-direction: column; gap: 2rem;">
+                            <div class="card">
+                                <h3 style="margin-bottom: 1rem;">Get in Touch</h3>
+                                <p style="color: var(--muted-foreground); margin-bottom: 1.5rem;">Multiple ways to reach our team</p>
+                                
+                                <div class="contact-info">
+                                    <div class="contact-icon">
+                                        <span class="material-icons">email</span>
+                                    </div>
+                                    <div>
+                                        <div style="font-weight: 500;">Email</div>
+                                        <div style="color: var(--muted-foreground); font-size: 0.9rem;">hello@modxgo.dev</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-info">
+                                    <div class="contact-icon">
+                                        <span class="material-icons">phone</span>
+                                    </div>
+                                    <div>
+                                        <div style="font-weight: 500;">Phone</div>
+                                        <div style="color: var(--muted-foreground); font-size: 0.9rem;">+1 (555) 123-4567</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-info">
+                                    <div class="contact-icon">
+                                        <span class="material-icons">location_on</span>
+                                    </div>
+                                    <div>
+                                        <div style="font-weight: 500;">Global Presence</div>
+                                        <div style="color: var(--muted-foreground); font-size: 0.9rem;">Remote-first, 25+ countries</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-info" style="margin-bottom: 0;">
+                                    <div class="contact-icon">
+                                        <span class="material-icons">schedule</span>
+                                    </div>
+                                    <div>
+                                        <div style="font-weight: 500;">Response Time</div>
+                                        <div style="color: var(--muted-foreground); font-size: 0.9rem;">Within 24 hours</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <h3 style="margin-bottom: 0.5rem;">Prefer to Schedule a Call?</h3>
+                                <p style="color: var(--muted-foreground); margin-bottom: 1.5rem;">Book a free 30-minute discovery session</p>
+                                <a href="#" class="btn btn-outline" style="width: 100%; justify-content: center;">
+                                    <span class="material-icons">calendar_today</span>
+                                    Schedule Discovery Call
+                                </a>
+                            </div>
+
+                            <div class="card">
+                                <h3 style="margin-bottom: 1rem;">What Happens Next?</h3>
+                                <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                    <div class="badge" style="background: var(--secondary); margin-top: 0.25rem;">1</div>
+                                    <div>
+                                        <div style="font-weight: 500; font-size: 0.9rem; margin-bottom: 0.25rem;">Initial Review</div>
+                                        <div style="color: var(--muted-foreground); font-size: 0.8rem;">We review your project details</div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                    <div class="badge" style="background: var(--secondary); margin-top: 0.25rem;">2</div>
+                                    <div>
+                                        <div style="font-weight: 500; font-size: 0.9rem; margin-bottom: 0.25rem;">Discovery Call</div>
+                                        <div style="color: var(--muted-foreground); font-size: 0.8rem;">30-minute strategy session</div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 1rem;">
+                                    <div class="badge" style="background: var(--secondary); margin-top: 0.25rem;">3</div>
+                                    <div>
+                                        <div style="font-weight: 500; font-size: 0.9rem; margin-bottom: 0.25rem;">Proposal</div>
+                                        <div style="color: var(--muted-foreground); font-size: 0.8rem;">Detailed project plan & timeline</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <div>
+                    <h3 class="font-serif" style="margin-bottom: 1rem;">modxgo</h3>
+                    <p style="opacity: 0.8; margin-bottom: 1rem;">Turning bold ideas into scalable products since 2016.</p>
+                    <p style="opacity: 0.8;">hello@modxgo.dev</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 1rem;">Services</h4>
+                    <ul style="list-style: none; opacity: 0.8; line-height: 1.8;">
+                        <li>MVP Development</li>
+                        <li>Full-Stack Development</li>
+                        <li>AI Integration</li>
+                        <li>UX/UI Design</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 1rem;">Company</h4>
+                    <ul style="list-style: none; opacity: 0.8; line-height: 1.8;">
+                        <li><a href="#" data-page="about" style="color: inherit; text-decoration: none;">About</a></li>
+                        <li><a href="#" data-page="work" style="color: inherit; text-decoration: none;">Work</a></li>
+                        <li><a href="#" data-page="insights" style="color: inherit; text-decoration: none;">Insights</a></li>
+                        <li><a href="#" data-page="contact" style="color: inherit; text-decoration: none;">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 1rem;">Connect</h4>
+                    <ul style="list-style: none; opacity: 0.8; line-height: 1.8;">
+                        <li>LinkedIn</li>
+                        <li>Twitter</li>
+                        <li>GitHub</li>
+                        <li>Dribbble</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.8;">
+                <p>&copy; 2024 modxgo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // State management
+        let currentPage = 'home';
+        let activeFilter = 'all';
+
+        // DOM Elements
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        const pages = document.querySelectorAll('.page');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        // Toggle mobile navigation
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+        });
+
+        // Navigation link click
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = link.getAttribute('data-target');
+
+                // Show the target page, hide others
+                pages.forEach(page => {
+                    if (page.id === target) {
+                        page.style.display = 'block';
+                        currentPage = target;
+                    } else {
+                        page.style.display = 'none';
+                    }
+                });
+
+                // Close mobile nav if open
+                if (!navMenu.classList.contains('hidden')) {
+                    navMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Filter functionality
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.getAttribute('data-filter');
+                activeFilter = filter;
+
+                const items = document.querySelectorAll('.portfolio-item');
+                items.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // Update active button styling
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Initialize first page
+        //pages.forEach(page => {
+        //    page.style.display = (page.id === currentPage) ? 'block' : 'none';
+        //});
+    </script>
+</body>
+</html>
