@@ -1,9 +1,141 @@
 (() => {
   const { Glyph, Lockup, Mono, Eyebrow, Btn, PageShell, CTAStrip, useViewport, clamp } = window;
-  const { WordReveal, CursorGlyph, Scramble, Marquee, SpotlightCard, FloatingProgress } = window;
+  const { WordReveal, CursorGlyph, Scramble, SpotlightCard, FloatingProgress, SignalField, HeroDepthScene } = window;
   const Hero = () => {
-    const { isPhone, isMobile, isTablet } = useViewport();
-    return /* @__PURE__ */ React.createElement("section", { "data-section": "Hero", style: { background: "var(--ink)", color: "white", position: "relative", overflow: "hidden" } }, /* @__PURE__ */ React.createElement("div", { "data-parallax": "0.4", style: { position: "absolute", top: 80, right: isMobile ? -200 : -120, opacity: 0.05, pointerEvents: "none" } }, /* @__PURE__ */ React.createElement(Glyph, { size: isMobile ? 420 : 680, color: "white", weight: 42, gap: 90 })), /* @__PURE__ */ React.createElement("div", { style: { position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)", backgroundSize: "80px 80px", pointerEvents: "none" } }), /* @__PURE__ */ React.createElement("div", { style: { maxWidth: 1280, margin: "0 auto", padding: isPhone ? "72px 16px 88px" : isMobile ? "84px 20px 96px" : "120px 32px 140px", position: "relative" } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 14, marginBottom: 28, fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: 1.6, textTransform: "uppercase", flexWrap: "wrap" } }, /* @__PURE__ */ React.createElement("span", { style: { color: "rgba(255,255,255,0.55)" } }, /* @__PURE__ */ React.createElement(Scramble, { text: "Modx \xB7 Technology Services", trigger: "mount", duration: 1 })), /* @__PURE__ */ React.createElement("span", { style: { width: 1, height: 14, background: "rgba(255,255,255,0.2)" } }), /* @__PURE__ */ React.createElement("span", { style: { color: "rgba(255,255,255,0.4)" } }, /* @__PURE__ */ React.createElement(Scramble, { text: "est. 2026 \xB7 SOC 2 Type II", trigger: "mount", duration: 1.4, delay: 0.2 }))), /* @__PURE__ */ React.createElement(WordReveal, { text: "Where engineering, design, and", size: isPhone ? 38 : isMobile ? 44 : isTablet ? 72 : 96, delay: 0.3 }), /* @__PURE__ */ React.createElement("h1", { style: { margin: 0, fontFamily: "'Space Grotesk', sans-serif", fontSize: isPhone ? 38 : isMobile ? 44 : isTablet ? 72 : 96, fontWeight: 600, letterSpacing: isMobile ? -2 : -4, lineHeight: 0.96, color: "white", display: "flex", alignItems: "center", gap: isMobile ? 12 : 18, flexWrap: "wrap" } }, /* @__PURE__ */ React.createElement("span", { style: { display: "inline-block", overflow: "hidden", paddingBottom: "0.05em" } }, /* @__PURE__ */ React.createElement("span", { className: "security-word", style: { display: "inline-block" } }, "security")), /* @__PURE__ */ React.createElement(CursorGlyph, { size: isPhone ? 42 : isMobile ? 48 : isTablet ? 64 : 84, color: "var(--signal)" }), /* @__PURE__ */ React.createElement("span", { style: { display: "inline-block", overflow: "hidden", paddingBottom: "0.05em" } }, /* @__PURE__ */ React.createElement("span", { className: "meet-word", style: { display: "inline-block" } }, "meet."))), /* @__PURE__ */ React.createElement("p", { "data-reveal": true, style: { margin: "32px 0 0", fontSize: clamp(17, "2.8vw", 19), color: "rgba(255,255,255,0.7)", maxWidth: 620, lineHeight: 1.55 } }, "Modx is a technology services firm partnering with high-growth and enterprise teams across the disciplines a modern product needs \u2014 compliance, platform, design, and AI."), /* @__PURE__ */ React.createElement("div", { "data-reveal": true, style: { display: "flex", flexDirection: isMobile ? "column" : "row", gap: 12, marginTop: 40, alignItems: isMobile ? "stretch" : "center" } }, /* @__PURE__ */ React.createElement(Btn, { variant: "solid", dark: true, href: "contact.html", magnetic: true, fullOnMobile: true }, "Start a project \u2192"), /* @__PURE__ */ React.createElement(Btn, { variant: "ghost", dark: true, href: "work.html", fullOnMobile: true }, "See work")), /* @__PURE__ */ React.createElement("div", { "data-reveal-stagger": true, style: { marginTop: isMobile ? 64 : 100, paddingTop: 32, borderTop: "1px solid rgba(255,255,255,0.1)", display: "grid", gridTemplateColumns: isPhone ? "1fr" : isMobile ? "repeat(2, minmax(0, 1fr))" : "repeat(4, minmax(0, 1fr))", gap: 24 } }, [
+    const { width, isPhone, isMobile, isTablet } = useViewport();
+    const isHeroStacked = isTablet || width < 1560;
+    const sectionRef = React.useRef(null);
+    const glowRef = React.useRef(null);
+    const haloRef = React.useRef(null);
+    const glyphRef = React.useRef(null);
+    const gridRef = React.useRef(null);
+    const copyRef = React.useRef(null);
+    const panelRef = React.useRef(null);
+    React.useEffect(() => {
+      if (isMobile || !window.gsap || !sectionRef.current) return void 0;
+      const gsap = window.gsap;
+      const section = sectionRef.current;
+      const copy = copyRef.current;
+      const panel = panelRef.current;
+      const glyph = glyphRef.current;
+      const grid = gridRef.current;
+      const glow = glowRef.current;
+      const halo = haloRef.current;
+      const motionX = isHeroStacked ? 9 : 14;
+      const motionY = isHeroStacked ? 7 : 10;
+      const handleMove = (event) => {
+        const rect = section.getBoundingClientRect();
+        const px = (event.clientX - rect.left) / rect.width - 0.5;
+        const py = (event.clientY - rect.top) / rect.height - 0.5;
+        if (glow) {
+          gsap.to(glow, {
+            x: px * (isHeroStacked ? 110 : 160),
+            y: py * (isHeroStacked ? 64 : 96),
+            opacity: 0.42,
+            duration: 0.45,
+            ease: "power2.out"
+          });
+        }
+        if (halo) {
+          gsap.to(halo, {
+            x: px * (isHeroStacked ? 38 : 58),
+            y: py * (isHeroStacked ? 28 : 42),
+            scale: 1.03,
+            opacity: 0.18,
+            duration: 0.5,
+            ease: "power2.out"
+          });
+        }
+        if (grid) {
+          gsap.to(grid, {
+            x: px * -10,
+            y: py * -8,
+            duration: 0.8,
+            ease: "power3.out"
+          });
+        }
+        if (glyph) {
+          gsap.to(glyph, {
+            x: px * (isHeroStacked ? 18 : 26),
+            y: py * (isHeroStacked ? 12 : 18),
+            rotation: px * -4,
+            duration: 0.9,
+            ease: "power3.out"
+          });
+        }
+        if (copy) {
+          gsap.to(copy, {
+            x: px * -motionX,
+            y: py * -motionY,
+            duration: 0.45,
+            ease: "power3.out"
+          });
+        }
+        if (panel) {
+          gsap.to(panel, {
+            x: px * motionX,
+            y: py * motionY,
+            rotationY: px * (isHeroStacked ? 1.8 : 2.8),
+            rotationX: py * (isHeroStacked ? -1.2 : -2),
+            scale: isHeroStacked ? 1.004 : 1.008,
+            duration: 0.55,
+            ease: "power3.out",
+            transformPerspective: 1200,
+            transformOrigin: "50% 50%"
+          });
+        }
+      };
+      const handleLeave = () => {
+        if (glow) gsap.to(glow, { x: 0, y: 0, opacity: 0.22, duration: 0.6, ease: "power2.out" });
+        if (halo) gsap.to(halo, { x: 0, y: 0, scale: 1, opacity: 0.1, duration: 0.65, ease: "power2.out" });
+        if (grid) gsap.to(grid, { x: 0, y: 0, duration: 0.8, ease: "power3.out" });
+        if (glyph) gsap.to(glyph, { x: 0, y: 0, rotation: 0, duration: 0.95, ease: "power3.out" });
+        if (copy) gsap.to(copy, { x: 0, y: 0, duration: 0.55, ease: "power3.out" });
+        if (panel) gsap.to(panel, { x: 0, y: 0, rotationY: 0, rotationX: 0, scale: 1, duration: 0.6, ease: "power3.out" });
+      };
+      section.addEventListener("pointermove", handleMove);
+      section.addEventListener("pointerleave", handleLeave);
+      return () => {
+        section.removeEventListener("pointermove", handleMove);
+        section.removeEventListener("pointerleave", handleLeave);
+      };
+    }, [isHeroStacked, isMobile]);
+    return /* @__PURE__ */ React.createElement("section", { ref: sectionRef, "data-section": "Hero", style: { background: "var(--ink)", color: "white", position: "relative", overflow: "hidden" } }, /* @__PURE__ */ React.createElement(HeroDepthScene, { scopeRef: sectionRef, stacked: isHeroStacked, enabled: !isMobile }), /* @__PURE__ */ React.createElement(
+      "div",
+      {
+        ref: glowRef,
+        style: {
+          position: "absolute",
+          left: isHeroStacked ? "56%" : "52%",
+          top: isHeroStacked ? "30%" : "42%",
+          width: isHeroStacked ? 420 : 620,
+          height: isHeroStacked ? 420 : 620,
+          transform: "translate(-50%, -50%)",
+          background: "radial-gradient(circle, rgba(82,122,255,0.16), rgba(255,255,255,0.04) 32%, transparent 68%)",
+          filter: "blur(64px)",
+          opacity: 0.22,
+          pointerEvents: "none"
+        }
+      }
+    ), /* @__PURE__ */ React.createElement(
+      "div",
+      {
+        ref: haloRef,
+        style: {
+          position: "absolute",
+          left: isHeroStacked ? "35%" : "44%",
+          top: isHeroStacked ? "36%" : "34%",
+          width: isHeroStacked ? 260 : 360,
+          height: isHeroStacked ? 260 : 360,
+          transform: "translate(-50%, -50%)",
+          borderRadius: "50%",
+          border: "1px solid rgba(255,255,255,0.06)",
+          background: "radial-gradient(circle, rgba(255,255,255,0.05), transparent 72%)",
+          opacity: 0.1,
+          pointerEvents: "none"
+        }
+      }
+    ), /* @__PURE__ */ React.createElement("div", { ref: glyphRef, "data-parallax": "0.4", style: { position: "absolute", top: 80, right: isMobile ? -200 : -120, opacity: 0.035, pointerEvents: "none" } }, /* @__PURE__ */ React.createElement(Glyph, { size: isMobile ? 420 : 680, color: "white", weight: 42, gap: 90 })), /* @__PURE__ */ React.createElement("div", { ref: gridRef, style: { position: "absolute", inset: "-4%", backgroundImage: "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)", backgroundSize: "80px 80px", pointerEvents: "none" } }), /* @__PURE__ */ React.createElement("div", { style: { maxWidth: 1280, margin: "0 auto", padding: isPhone ? "72px 16px 88px" : isMobile ? "84px 20px 96px" : "120px 32px 140px", position: "relative" } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 14, marginBottom: 28, fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: 1.6, textTransform: "uppercase", flexWrap: "wrap" } }, /* @__PURE__ */ React.createElement("span", { style: { color: "rgba(255,255,255,0.55)" } }, /* @__PURE__ */ React.createElement(Scramble, { text: "Modx \xB7 Technology Services", trigger: "mount", duration: 1 })), /* @__PURE__ */ React.createElement("span", { style: { width: 1, height: 14, background: "rgba(255,255,255,0.2)" } }), /* @__PURE__ */ React.createElement("span", { style: { color: "rgba(255,255,255,0.4)" } }, /* @__PURE__ */ React.createElement(Scramble, { text: "est. 2026 \xB7 SOC 2 Type II", trigger: "mount", duration: 1.4, delay: 0.2 }))), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: isHeroStacked ? "1fr" : "minmax(0, 1.05fr) minmax(500px, 0.95fr)", gap: isHeroStacked ? isMobile ? 34 : 48 : 40, alignItems: isHeroStacked ? "start" : "center" } }, /* @__PURE__ */ React.createElement("div", { ref: copyRef, style: { minWidth: 0 } }, /* @__PURE__ */ React.createElement(WordReveal, { text: "Where engineering, design, and", size: isPhone ? 38 : isMobile ? 44 : isTablet ? 72 : 96, delay: 0.3 }), /* @__PURE__ */ React.createElement("h1", { style: { margin: 0, fontFamily: "'Space Grotesk', sans-serif", fontSize: isPhone ? 38 : isMobile ? 44 : isTablet ? 72 : 96, fontWeight: 600, letterSpacing: isMobile ? -2 : -4, lineHeight: 0.96, color: "white", display: "flex", alignItems: "flex-end", gap: isMobile ? 12 : 18, flexWrap: "wrap" } }, /* @__PURE__ */ React.createElement("span", { style: { display: "inline-block", overflow: "hidden", paddingBottom: "0.05em" } }, /* @__PURE__ */ React.createElement("span", { className: "security-word", style: { display: "inline-block" } }, "security")), /* @__PURE__ */ React.createElement("span", { style: { display: "inline-flex", alignItems: "flex-end", transform: "translateY(-0.04em)" } }, /* @__PURE__ */ React.createElement(CursorGlyph, { size: isPhone ? 42 : isMobile ? 48 : isTablet ? 64 : 84, color: "var(--signal)" })), /* @__PURE__ */ React.createElement("span", { style: { display: "inline-block", overflow: "hidden", paddingBottom: "0.05em" } }, /* @__PURE__ */ React.createElement("span", { className: "meet-word", style: { display: "inline-block" } }, "meet."))), /* @__PURE__ */ React.createElement("p", { "data-reveal": true, style: { margin: "32px 0 0", fontSize: clamp(17, "2.8vw", 19), color: "rgba(255,255,255,0.7)", maxWidth: 620, lineHeight: 1.55 } }, "Modx is a technology services firm partnering with high-growth and enterprise teams across the disciplines a modern product needs \u2014 compliance, platform, design, and AI."), /* @__PURE__ */ React.createElement("div", { "data-reveal": true, style: { display: "flex", flexDirection: isMobile ? "column" : "row", gap: 12, marginTop: 40, alignItems: isMobile ? "stretch" : "center" } }, /* @__PURE__ */ React.createElement(Btn, { variant: "solid", dark: true, href: "contact.html", magnetic: true, fullOnMobile: true }, "Start a project \u2192"), /* @__PURE__ */ React.createElement(Btn, { variant: "ghost", dark: true, href: "work.html", fullOnMobile: true }, "See work"))), /* @__PURE__ */ React.createElement("div", { ref: panelRef, "data-reveal": true, style: { minWidth: 0, maxWidth: isHeroStacked ? 760 : "none", width: "100%", justifySelf: isHeroStacked ? "center" : "stretch", margin: isHeroStacked ? "0 auto" : 0 } }, /* @__PURE__ */ React.createElement(SignalField, null))), /* @__PURE__ */ React.createElement("div", { "data-reveal-stagger": true, style: { marginTop: isMobile ? 48 : 72, paddingTop: 32, borderTop: "1px solid rgba(255,255,255,0.1)", display: "grid", gridTemplateColumns: isPhone ? "1fr" : isMobile ? "repeat(2, minmax(0, 1fr))" : "repeat(4, minmax(0, 1fr))", gap: 24 } }, [
       { n: "120", suffix: "+", label: "Engineers, designers, and auditors" },
       { n: "40", suffix: "+", label: "Active enterprise engagements" },
       { n: "18", suffix: "", label: "Industries served" },
@@ -96,7 +228,10 @@
     }, []);
     return null;
   };
-  const MarqueeStrip = () => /* @__PURE__ */ React.createElement("section", { style: { background: "var(--ink)", color: "white", padding: "60px 0", borderTop: "1px solid rgba(255,255,255,0.08)", borderBottom: "1px solid rgba(255,255,255,0.08)" } }, /* @__PURE__ */ React.createElement(Marquee, { items: ["Compliance", "Platform", "Product", "Applied AI", "Engineering", "Design"], speed: 50, color: "white", opacity: 0.35 }));
+  const MarqueeStrip = () => {
+    const { isMobile } = useViewport();
+    return /* @__PURE__ */ React.createElement("section", { style: { background: "var(--ink)", color: "white", padding: isMobile ? "32px 20px" : "40px 32px", borderTop: "1px solid rgba(255,255,255,0.08)", borderBottom: "1px solid rgba(255,255,255,0.08)", overflow: "hidden" } }, /* @__PURE__ */ React.createElement("div", { style: { maxWidth: 1280, margin: "0 auto" } }, /* @__PURE__ */ React.createElement("div", { "data-reveal-stagger": true, style: { display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center" } }, ["Compliance", "Platform", "Product", "Applied AI", "Engineering", "Design"].map((item) => /* @__PURE__ */ React.createElement("span", { key: item, style: { padding: isMobile ? "10px 14px" : "12px 16px", borderRadius: 999, border: "1px solid rgba(255,255,255,0.12)", background: "rgba(255,255,255,0.04)", fontFamily: "'JetBrains Mono', monospace", fontSize: isMobile ? 11 : 12, letterSpacing: 1, textTransform: "uppercase", color: "rgba(255,255,255,0.68)" } }, item)))));
+  };
   const Site = () => /* @__PURE__ */ React.createElement(PageShell, { navDark: true, current: "" }, /* @__PURE__ */ React.createElement(HeroSecondLine, null), /* @__PURE__ */ React.createElement(FloatingProgress, null), /* @__PURE__ */ React.createElement(Hero, null), /* @__PURE__ */ React.createElement(Trusted, null), /* @__PURE__ */ React.createElement(MarqueeStrip, null), /* @__PURE__ */ React.createElement(Services, null), /* @__PURE__ */ React.createElement(Capabilities, null), /* @__PURE__ */ React.createElement(Work, null), /* @__PURE__ */ React.createElement(Approach, null), /* @__PURE__ */ React.createElement(Quote, null), /* @__PURE__ */ React.createElement(CTAStrip, null));
   ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(Site, null));
 })();
