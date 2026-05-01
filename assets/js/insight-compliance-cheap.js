@@ -64,7 +64,7 @@
     related: [
       { slug: "insight-backstage.html", tag: "Platform", title: "Backstage is a graveyard. What to build instead." },
       { slug: "insight-evals.html", tag: "AI", title: "Evals are the moat." },
-      { slug: "case-northwind.html", tag: "Case study", title: "Northwind Bank: spreadsheets to continuous SOC 2." }
+      { slug: "case-payments-platform.html", tag: "Work", title: "Merchant payments site: trust, compliance, and conversion." }
     ]
   };
 })();

@@ -144,7 +144,9 @@
   const FloatingProgress = () => {
     const [progress, setProgress] = React.useState(0);
     const [section, setSection] = React.useState("");
+    const [isCompact, setIsCompact] = React.useState(() => typeof window === "undefined" ? false : window.innerWidth < 900);
     React.useEffect(() => {
+      const onResize = () => setIsCompact(window.innerWidth < 900);
       const onScroll = () => {
         const h = document.documentElement;
         const p = h.scrollTop / (h.scrollHeight - h.clientHeight);
@@ -157,11 +159,16 @@
         });
         setSection(cur);
       };
+      window.addEventListener("resize", onResize, { passive: true });
       window.addEventListener("scroll", onScroll, { passive: true });
+      onResize();
       onScroll();
-      return () => window.removeEventListener("scroll", onScroll);
+      return () => {
+        window.removeEventListener("resize", onResize);
+        window.removeEventListener("scroll", onScroll);
+      };
     }, []);
-    if (progress < 0.05 || progress > 0.97) return null;
+    if (isCompact || progress < 0.05 || progress > 0.97) return null;
     return /* @__PURE__ */ React.createElement("div", { style: { position: "fixed", right: 28, bottom: 28, zIndex: 40, display: "flex", alignItems: "center", gap: 14, padding: "10px 14px 10px 18px", background: "rgba(15,18,28,0.92)", color: "white", borderRadius: 999, backdropFilter: "blur(12px)", border: "1px solid rgba(255,255,255,0.12)", fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: 1.4, textTransform: "uppercase", transition: "opacity 0.3s" } }, /* @__PURE__ */ React.createElement("span", { style: { color: "rgba(255,255,255,0.55)" } }, section || "Modx"), /* @__PURE__ */ React.createElement("div", { style: { position: "relative", width: 32, height: 32 } }, /* @__PURE__ */ React.createElement("svg", { viewBox: "0 0 32 32", width: 32, height: 32, style: { transform: "rotate(-90deg)" } }, /* @__PURE__ */ React.createElement("circle", { cx: "16", cy: "16", r: "13", stroke: "rgba(255,255,255,0.15)", strokeWidth: "2", fill: "none" }), /* @__PURE__ */ React.createElement(
       "circle",
       {

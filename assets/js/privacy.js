@@ -5,11 +5,13 @@
     subtitle: "How we collect, use, and protect personal information across modxgo.com and our engagements.",
     effective: "April 1, 2026",
     version: "3.2",
-    contact: "privacy@modxgo.com",
+    // Direct email contact intentionally hidden.
+    contact: null,
     sections: [
       { id: "overview", label: "1. Overview", body: [
         'Modx Technology Services, Inc. ("Modx", "we", "us") provides technology services to enterprise clients. This policy explains what personal information we collect when you visit modxgo.com, contact us, attend an event, or interact with us during an engagement.',
-        `We treat personal information conservatively. We collect what we need, store it for as long as we need it, and never sell it. If you have a question about data we hold about you, write to <a href="mailto:privacy@modxgo.com" style="color:var(--ink)">privacy@modxgo.com</a> and we'll respond within 30 days.`
+        // Direct privacy email intentionally hidden.
+        "We treat personal information conservatively. We collect what we need, store it for as long as we need it, and never sell it. If you have a question about data we hold about you, use the website contact form and we'll respond within 30 days."
       ] },
       { id: "what", label: "2. What we collect", body: [
         "We collect three categories of personal information:",
@@ -35,7 +37,8 @@
         "We do not sell personal information. We do not share it with advertisers. We respond to lawful subpoenas after attempting to notify you, where legally permitted."
       ] },
       { id: "rights", label: "5. Your rights", body: [
-        `Depending on where you live, you may have rights to access, correct, delete, restrict, or port the personal information we hold about you. To exercise any of these rights, email <a href="mailto:privacy@modxgo.com" style="color:var(--ink)">privacy@modxgo.com</a>. We respond within 30 days. We won't ask for more identifying information than necessary to verify the request.`,
+        // Direct privacy email intentionally hidden.
+        "Depending on where you live, you may have rights to access, correct, delete, restrict, or port the personal information we hold about you. To exercise any of these rights, use the website contact form. We respond within 30 days. We won't ask for more identifying information than necessary to verify the request.",
         'California residents have additional rights under CCPA. EU/UK residents have rights under GDPR/UK GDPR. We do not engage in activity that would qualify as the "sale" or "sharing" of personal information under CCPA.'
       ] },
       { id: "cookies", label: "6. Cookies & tracking", body: [
@@ -44,17 +47,19 @@
       ] },
       { id: "security", label: "7. Security", body: [
         "Modx maintains a documented information security program aligned to SOC 2 Type II and ISO 27001. Controls are continuously monitored and audited annually by an independent third party. Our most recent attestation is available under NDA via our trust center.",
-        `Despite our controls, no system is perfectly secure. If you believe you've found a vulnerability in our systems, please write to <a href="mailto:security@modxgo.com" style="color:var(--ink)">security@modxgo.com</a>.`
+        // Direct security email intentionally hidden.
+        "Despite our controls, no system is perfectly secure. If you believe you've found a vulnerability in our systems, use the website contact form and we will route it internally."
       ] },
       { id: "retention", label: "8. Retention", body: [
         "Marketing-site contact data is retained for 24 months from last interaction, then deleted. Engagement data is retained per the term of your master services agreement and deleted within 90 days of termination unless legally required to retain longer."
       ] },
       { id: "international", label: "9. International transfers", body: [
-        "Modx is headquartered in the United States with offices in Portugal. EU/UK personal data we receive is transferred under Standard Contractual Clauses and supplemented with the technical and organizational measures described in our DPA."
+        "Modx operates as a distributed company. EU/UK personal data we receive is transferred under Standard Contractual Clauses and supplemented with the technical and organizational measures described in our DPA."
       ] },
       { id: "changes", label: "10. Changes & contact", body: [
         "We update this policy when our practices change. The version and effective date are stamped at the top. Material changes are emailed to active contacts.",
-        'Questions? <a href="mailto:privacy@modxgo.com" style="color:var(--ink)">privacy@modxgo.com</a> \xB7 Modx Technology Services, Inc. \xB7 350 Mission St., San Francisco, CA 94105.'
+        // Direct privacy email intentionally hidden.
+        "Questions? Use the website contact form."
       ] }
     ]
   };

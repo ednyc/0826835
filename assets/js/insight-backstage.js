@@ -47,7 +47,7 @@
     related: [
       { slug: "insight-evals.html", tag: "AI", title: "Evals are the moat." },
       { slug: "insight-compliance-cheap.html", tag: "Compliance", title: "The compliance program that costs less than the auditor." },
-      { slug: "case-lumen.html", tag: "Case study", title: "Lumen Energy: cutting $3.1M of grid forecasting compute." }
+      { slug: "work.html", tag: "Work", title: "Selected launches and anonymized case studies." }
     ]
   };
 })();

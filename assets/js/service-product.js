@@ -12,9 +12,9 @@
       { n: "04", title: "Brand & identity", desc: "Verbal and visual identity for technology companies. Logos, type systems, brand guidelines, and the marketing site to launch them.", items: ["Naming", "Identity systems", "Guidelines", "Marketing site"] }
     ],
     proofs: [
-      { metric: "12 wk", label: "0\u21921 launch with Polaris Health" },
-      { metric: "3.4\xD7", label: "Activation lift after Quantix UX rebuild" },
-      { metric: "94%", label: "Design system adoption across 18 product teams" }
+      { metric: "0\u21921", label: "New launches with product, brand, and engineering in one room" },
+      { metric: "UX", label: "Redesigns for dense workflows and multi-step funnels" },
+      { metric: "DS", label: "Code-first design systems teams can maintain after handoff" }
     ],
     faqs: [
       ["Will you work with our existing design team?", "Yes. We integrate into your rituals \u2014 standups, reviews, retros \u2014 and explicitly mentor your team if you want."],

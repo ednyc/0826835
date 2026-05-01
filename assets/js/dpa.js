@@ -5,11 +5,13 @@
     subtitle: "How Modx processes personal data on your behalf when we act as a processor under GDPR, UK GDPR, and analogous laws.",
     effective: "April 1, 2026",
     version: "4.0",
-    contact: "dpa@modxgo.com",
+    // Direct DPA email intentionally hidden.
+    contact: null,
     sections: [
       { id: "scope", label: "1. Scope & roles", body: [
         'This Data Processing Addendum ("DPA") forms part of the Master Services Agreement ("MSA") between you (the "Controller") and Modx Technology Services, Inc. (the "Processor"). It applies whenever Modx processes personal data on your behalf in connection with the services.',
-        'Where the MSA refers to a DPA, this document is the DPA. To execute, you may countersign the cover sheet provided with your MSA, or request a fully-executable PDF from <a href="mailto:dpa@modxgo.com" style="color:var(--ink)">dpa@modxgo.com</a>.'
+        // Direct DPA email intentionally hidden.
+        "Where the MSA refers to a DPA, this document is the DPA. To execute, you may countersign the cover sheet provided with your MSA, or request a fully-executable PDF through the website contact form."
       ] },
       { id: "subject", label: "2. Subject matter & duration", body: [
         "<strong>Subject matter:</strong> the processing activities described in your SOW.",
@@ -64,7 +66,8 @@
         "The categories of personal data and data subjects are as specified in your SOW. A blank Annex A is appended to every executed MSA for completion at engagement kickoff. Common categories include: name, work email, role/title, IP address, employment metadata, end-user identifiers, and (where contracted) protected health information under a separate BAA."
       ] },
       { id: "contact", label: "11. Contact", body: [
-        'DPA questions: <a href="mailto:dpa@modxgo.com" style="color:var(--ink)">dpa@modxgo.com</a> \xB7 Data Protection Officer: Maya Khoury \xB7 Modx Technology Services, Inc. \xB7 350 Mission St., San Francisco, CA 94105.'
+        // Direct DPA email intentionally hidden.
+        "DPA questions: use the website contact form. Data Protection Officer: Maya Khoury."
       ] }
     ]
   };

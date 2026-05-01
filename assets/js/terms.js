@@ -5,7 +5,8 @@
     subtitle: "The agreement that governs your use of modxgo.com. Engagement-specific terms live in our master services agreement.",
     effective: "April 1, 2026",
     version: "2.1",
-    contact: "legal@modxgo.com",
+    // Direct legal email intentionally hidden.
+    contact: null,
     sections: [
       { id: "agreement", label: "1. Agreement", body: [
         'These terms (the "Terms") govern your use of modxgo.com and any free-tier resources we publish (collectively, the "Site"). By accessing the Site you agree to these Terms.',
@@ -47,11 +48,12 @@
         "We may suspend or terminate your access to the Site at any time, for any reason, with or without notice. Sections that by their nature should survive termination (IP, disclaimers, liability, dispute resolution) survive."
       ] },
       { id: "law", label: "10. Governing law & disputes", body: [
-        "These Terms are governed by the laws of the State of California, excluding its conflict-of-laws rules. Disputes that cannot be resolved through good-faith negotiation are subject to binding arbitration in San Francisco under JAMS rules, except that either party may seek injunctive relief in court for IP violations.",
+        "These Terms are governed by the laws of the State of California, excluding its conflict-of-laws rules. Disputes that cannot be resolved through good-faith negotiation are subject to binding arbitration under JAMS rules, except that either party may seek injunctive relief in court for IP violations.",
         "If any provision is found unenforceable, the rest remain in effect."
       ] },
       { id: "contact", label: "11. Contact", body: [
-        'Questions, notices, or service of process: <a href="mailto:legal@modxgo.com" style="color:var(--ink)">legal@modxgo.com</a> \xB7 Modx Technology Services, Inc. \xB7 350 Mission St., San Francisco, CA 94105.'
+        // Direct legal email intentionally hidden.
+        "Questions, notices, or service of process: use the website contact form."
       ] }
     ]
   };

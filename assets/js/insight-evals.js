@@ -56,7 +56,7 @@
     related: [
       { slug: "insight-backstage.html", tag: "Platform", title: "Backstage is a graveyard. What to build instead." },
       { slug: "insight-compliance-cheap.html", tag: "Compliance", title: "The compliance program that costs less than the auditor." },
-      { slug: "case-vector.html", tag: "Case study", title: "Vector Capital: 52% AI cost reduction with a routing layer." }
+      { slug: "case-workforce-platform.html", tag: "Work", title: "AI workforce platform: multi-audience product positioning." }
     ]
   };
 })();

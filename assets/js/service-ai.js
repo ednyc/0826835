@@ -12,9 +12,9 @@
       { n: "04", title: "Model cost engineering", desc: "Routing, caching, distillation, and quantization. Cut inference spend by half without giving up quality.", items: ["Model routing", "Semantic caching", "Distillation", "Quantization"] }
     ],
     proofs: [
-      { metric: "60%", label: "Polaris clinical notes drafted by AI, with 99.4% citation accuracy" },
-      { metric: "52%", label: "Inference cost reduction at Vector via routing" },
-      { metric: "0", label: "Compliance findings on Helix's medical RAG eval" }
+      { metric: "RAG", label: "Citation-aware retrieval systems for high-stakes workflows" },
+      { metric: "Eval", label: "Regression harnesses that gate prompt and model changes" },
+      { metric: "Route", label: "Model routing and caching to keep inference costs in bounds" }
     ],
     faqs: [
       ["What models do you use?", "Whatever the workload demands. Frontier models for hard reasoning, open-weight for cheap throughput, fine-tunes for narrow domains. We benchmark before we commit."],

@@ -12,9 +12,9 @@
       { n: "04", title: "Data infrastructure", desc: "Data lakes, lakehouses, and streaming. Snowflake, Databricks, Kafka, or open-source \u2014 pragmatic stacks, not vendor pitches.", items: ["Data lakehouse", "ETL/ELT", "Streaming (Kafka)", "Governance"] }
     ],
     proofs: [
-      { metric: "80%", label: "Faster deploy times at Lumen Energy" },
-      { metric: "$3.1M", label: "Annual cloud spend reduction" },
-      { metric: "9 mo", label: "On-prem to multi-region cutover" }
+      { metric: "IaC", label: "Cloud foundations with repeatable environments and cutover playbooks" },
+      { metric: "SLO", label: "Reliability programs with observability, runbooks, and incident habits" },
+      { metric: "IDP", label: "Developer platforms that reduce ticket-driven operations" }
     ],
     faqs: [
       ["Do you bring opinions or take orders?", "Both. We come with strong defaults \u2014 Terraform, OTel, GitOps \u2014 but adapt to your stack. We don't insist on Kubernetes if you don't need it."],

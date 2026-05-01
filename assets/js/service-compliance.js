@@ -7,9 +7,9 @@
     { n: "04", title: "Penetration testing", desc: "Application, network, and red-team engagements run by ex-offensive operators. Reports your auditors will accept.", items: ["External / internal pentest", "Web app testing", "Cloud config review", "Red team"] }
   ];
   const proofs = [
-    { metric: "11 wk", label: "Northwind Bank, spreadsheets to SOC 2 Type II" },
-    { metric: "0", label: "Findings on Polaris Health's HITRUST audit" },
-    { metric: "$240K", label: "Avg. annual savings vs. in-house program" }
+    { metric: "SOC 2", label: "Audit prep, evidence pipelines, and continuous monitoring" },
+    { metric: "HIPAA", label: "Security architecture reviews for regulated product teams" },
+    { metric: "PCI", label: "Payments-adjacent trust programs and vendor risk workflows" }
   ];
   const faqs = [
     ["How is this different from Vanta or Drata?", "Vanta and Drata are tools. We're the team that runs them \u2014 plus the policy work, the auditor relationships, and the year-round operations. Most of our clients use a tool AND us."],
