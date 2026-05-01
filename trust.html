@@ -22,8 +22,9 @@
       --plum: oklch(0.5 0.16 320);
     }
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; background: var(--paper); }
+    html, body { margin: 0; padding: 0; background: var(--paper); width: 100%; overflow-x: hidden; }
     body { min-height: 100vh; }
+    #root { min-height: 100vh; overflow-x: hidden; }
     button, input, textarea, select { font-family: inherit; }
     a { color: inherit; }
     ::selection { background: var(--signal); color: var(--ink); }
@@ -43,7 +44,7 @@
   <script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js" crossorigin="anonymous" defer></script>
   <script src="https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js" crossorigin="anonymous" defer></script>
 
-  <script src="assets/js/shared.js" defer></script>
-  <script src="assets/js/trust.js" defer></script>
+  <script src="assets/js/shared.js?v=20260501064801588" defer></script>
+  <script src="assets/js/trust.js?v=20260501064801588" defer></script>
 </body>
 </html>
