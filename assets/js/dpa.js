@@ -33,7 +33,7 @@
         ] }
       ] },
       { id: "security", label: "4. Security measures (Annex B)", body: [
-        "Modx maintains an information security program aligned to SOC 2 Type II and ISO 27001. Specific controls include:",
+        "Modx maintains administrative, technical, and organizational measures appropriate to the scope of each engagement. Typical controls include:",
         { type: "table", cols: ["Domain", "Control"], rows: [
           ["Access", "SSO + MFA, role-based access, quarterly reviews"],
           ["Encryption", "TLS 1.3 in transit; AES-256 at rest"],
@@ -45,7 +45,7 @@
         ] }
       ] },
       { id: "subprocessors", label: "5. Sub-processors", body: [
-        "The Controller authorizes Modx to engage the sub-processors listed in our trust center. Modx will give 30 days' notice of any new sub-processor; the Controller may object on reasonable grounds, in which case the parties will work in good faith to find a substitute.",
+        "The Controller authorizes Modx to engage the sub-processors reasonably needed to deliver the services, subject to contractual safeguards and any notice requirements in the governing agreement or applicable law.",
         "Modx remains liable for the acts and omissions of its sub-processors."
       ] },
       { id: "transfers", label: "6. International transfers", body: [
@@ -57,7 +57,7 @@
         "Modx will assist the Controller in meeting its own breach-notification obligations."
       ] },
       { id: "audit", label: "8. Audit rights", body: [
-        "On 30 days' notice and no more than once per 12-month period (except after a confirmed breach), the Controller may audit Modx's compliance with this DPA, in person or via written questionnaire. In lieu of an on-site audit, Modx may provide its current SOC 2 Type II report and ISO 27001 certificate, which the Controller agrees to accept as sufficient under normal circumstances."
+        "On 30 days' notice and no more than once per 12-month period (except after a confirmed breach), the Controller may audit Modx's compliance with this DPA, in person or via written questionnaire. Where appropriate, Modx may satisfy reasonable requests with current policies, questionnaires, or other relevant documentation instead of an on-site audit."
       ] },
       { id: "deletion", label: "9. Return & deletion", body: [
         "Within 90 days of termination of the MSA, Modx will, at the Controller's choice, delete or return all personal data and certify deletion in writing. Backups containing personal data will be deleted on their normal rotation cycle and are isolated from production systems in the meantime."
@@ -67,7 +67,7 @@
       ] },
       { id: "contact", label: "11. Contact", body: [
         // Direct DPA email intentionally hidden.
-        "DPA questions: use the website contact form. Data Protection Officer: Maya Khoury."
+        "DPA questions: use the website contact form. Engagement-specific contacts are designated in the applicable MSA or SOW."
       ] }
     ]
   };

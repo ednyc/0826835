@@ -20,7 +20,7 @@
       ["Do you bring opinions or take orders?", "Both. We come with strong defaults \u2014 Terraform, OTel, GitOps \u2014 but adapt to your stack. We don't insist on Kubernetes if you don't need it."],
       ["Can you embed with our existing platform team?", "Yes. About half our platform engagements are augmentations, not greenfield. We sit inside your org chart for the duration."],
       ["What does success look like?", "Your engineers stop filing platform tickets and start using the paved road. Deploys go from hours to minutes. On-call sleeps."],
-      ["Will this lock us into your tooling?", "No. Everything we build is standard, open, and documented. Most of our clients run the platform without us within 18 months."]
+      ["Will this lock us into your tooling?", "No. Everything we build is standard, open, and documented so your team can operate it directly rather than depending on us permanently."]
     ]
   };
   ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(window.ServiceDetail, { data }));

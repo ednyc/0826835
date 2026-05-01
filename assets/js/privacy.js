@@ -22,17 +22,17 @@
         ] }
       ] },
       { id: "use", label: "3. How we use it", body: [
-        "Marketing-site data is used to respond to inquiries, route conversations to the right team, and (rarely, with consent) send you our newsletter. Engagement data is used only to deliver the services contracted under your agreement.",
+        "Marketing-site data is used to respond to inquiries, route conversations to the right team, and maintain appropriate records around those conversations. Engagement data is used only to deliver the services contracted under your agreement.",
         "We do not use your data to train any machine learning model \u2014 ours or anyone else's \u2014 without explicit written authorization."
       ] },
       { id: "sharing", label: "4. Sharing & sub-processors", body: [
         "We share personal information with a small set of vetted vendors. The current sub-processor list is published on our trust center and updated when changes occur.",
-        { type: "table", cols: ["Vendor", "Purpose", "Region"], rows: [
-          ["Google Workspace", "Email, docs", "US"],
-          ["HubSpot", "CRM, contact form", "US"],
-          ["AWS", "Hosting, application infrastructure", "US-East / EU-West"],
-          ["Okta", "SSO and access management", "US"],
-          ["Vanta", "Compliance monitoring", "US"]
+        { type: "table", cols: ["Category", "Purpose", "Notes"], rows: [
+          ["Hosting provider", "Marketing site and application infrastructure", "Region depends on deployment"],
+          ["Email and productivity tools", "Routine communication and documents", "Used for normal operations"],
+          ["Contact-routing tools", "Inquiry handling and follow-up", "Used for inbound conversations only"],
+          ["Access-management tools", "Authentication and administrative control", "Used internally"],
+          ["Analytics provider", "Limited site measurement", "Configured narrowly for reporting"]
         ] },
         "We do not sell personal information. We do not share it with advertisers. We respond to lawful subpoenas after attempting to notify you, where legally permitted."
       ] },
@@ -42,11 +42,10 @@
         'California residents have additional rights under CCPA. EU/UK residents have rights under GDPR/UK GDPR. We do not engage in activity that would qualify as the "sale" or "sharing" of personal information under CCPA.'
       ] },
       { id: "cookies", label: "6. Cookies & tracking", body: [
-        "We use a single first-party session cookie for our marketing site and one analytics cookie (privacy-preserving, no cross-site tracking). We do not run advertising pixels or third-party retargeting scripts.",
-        "Your browser's Do Not Track signal is honored."
+        "We use limited analytics and the minimal site functionality needed for the marketing site. We do not run advertising pixels or third-party retargeting scripts."
       ] },
       { id: "security", label: "7. Security", body: [
-        "Modx maintains a documented information security program aligned to SOC 2 Type II and ISO 27001. Controls are continuously monitored and audited annually by an independent third party. Our most recent attestation is available under NDA via our trust center.",
+        "Modx maintains documented operational, technical, and administrative safeguards appropriate to the systems involved in the work. Additional engagement-specific information is shared directly when relevant.",
         // Direct security email intentionally hidden.
         "Despite our controls, no system is perfectly secure. If you believe you've found a vulnerability in our systems, use the website contact form and we will route it internally."
       ] },
